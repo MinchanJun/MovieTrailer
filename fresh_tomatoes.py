@@ -128,6 +128,7 @@ movie_tile_content = '''
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
     <h4>Movie Hours: {movie_hours} hrs</h4>
+
 </div>
 '''
 # A single tv entry html template
@@ -135,6 +136,7 @@ tv_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{tv_title}</h2>
+    <h4>On {tv_broadcaster}</h4>
 </div>
 '''
 
@@ -175,8 +177,9 @@ def create_tv_tiles_content(tvs):
         # Append the tile for the movie with its content filled in
         content += tv_tile_content.format(
             tv_title=tv.title,
+            tv_broadcaster = tv.broadcaster,
             poster_image_url=tv.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            trailer_youtube_id=trailer_youtube_id,
         )
         print(content)
     return content
